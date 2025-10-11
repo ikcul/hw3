@@ -49,6 +49,10 @@ struct Node
  */
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot);
 
+//helper function
+
+void appendToEnd(Node*& head, Node* node);
+
 /**
  * Given a linked list pointed to by head, removes (filters out) nodes
  * whose value does not meet the criteria given by the predicate
@@ -83,7 +87,20 @@ Node* llfilter(Node* head, Comp pred)
     //*********************************************
     // Provide your implementation below
     //*********************************************
-
+    Node* temp = head;
+    Node* prev = nullptr;
+    if (temp->next == nullptr){
+        return;
+    }else if (()*(pred)){
+        prev->next = temp->next;
+        temp->next = nullptr;
+        delete temp;
+        temp = prev->next;
+        llfilter(head, pred);
+    }else{
+        prev = temp;
+        temp = temp->next;
+    }
 
 }
 
