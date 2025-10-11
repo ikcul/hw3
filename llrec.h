@@ -91,7 +91,7 @@ Node* llfilter(Node* head, Comp pred)
     Node* prev = nullptr;
     if (temp->next == nullptr){
         return;
-    }else if (()*(pred)){
+    }else if (pred(temp->val)){
         prev->next = temp->next;
         temp->next = nullptr;
         delete temp;
