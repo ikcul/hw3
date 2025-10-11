@@ -8,27 +8,21 @@
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot){
     Node* temp = head;
     if (head == nullptr){
+        smaller = nullptr;
+        larger = nullptr;
         return;
-    }else if (pivot >= head->val){
-        head = temp->next;
+    }
+    head = head->next;
+    llpivot(head, smaller, larger, pivot);
+
+    if (pivot >= temp->val){
         temp->next = smaller;
         smaller = temp;
-        appendToEnd(smaller, temp);
-        llpivot(head, smaller, larger, pivot);
-    }else{
-        head = temp->next;
+    }
+    else{
         temp->next = larger;
-        larger = temp;
-        appendToEnd(larger, temp);
-        llpivot(head, smaller, larger, pivot);
+        larger = temp;   
     }
-}
 
-void appendToEnd(Node*& head, Node* node){
-    if (head->next == nullptr){
-        head->next = node;
-        node->next = nullptr;
-    }else {
-        appendToEnd(head->next, node);
-    }
+
 }
