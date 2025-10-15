@@ -147,7 +147,7 @@ T const & Heap<T,PComparator>::top() const
     // ================================
     // throw the appropriate exception
     // ================================
-    throw std::out_of_range("heap is empty");
+    throw std::underflow_error("heap is empty");
 
   }
   // If we get here we know the heap has at least 1 item
@@ -167,7 +167,7 @@ void Heap<T,PComparator>::pop()
     // ================================
     // throw the appropriate exception
     // ================================
-    throw std::out_of_range("heap is empty");
+    throw std::underflow_error("heap is empty");
 
   }
   std::swap(data[0], data[data.size() - 1]);
